@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Student Expense Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .app-name {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            border-left: 4px solid #4facfe;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 0%, rgba(79, 172, 254, 0.05) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .section:hover::before {
+            opacity: 1;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left-color: #00f2fe;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-number {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .section p, .section ul {
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section ul {
+            padding-left: 20px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+            list-style-type: none;
+            position: relative;
+        }
+
+        .section li::before {
+            content: '→';
+            color: #4facfe;
+            font-weight: bold;
+            position: absolute;
+            left: -20px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .contact-info h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .email-link {
+            color: #a8edea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .email-link:hover {
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .meta-info {
+                gap: 15px;
+            }
+            
+            .meta-item {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📄 Terms of Service</h1>
+            <div class="app-name">Student Expense Tracker</div>
+            <div class="meta-info">
+                <div class="meta-item">Effective: July 25, 2025</div>
+                <div class="meta-item">Platform: iOS</div>
+                <div class="meta-item">Developer: Buckit</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2><span class="section-number">1</span>Acceptance of Terms</h2>
+                <p>By downloading or using <em>Student Expense Tracker</em>, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree, please do not use the app.</p>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-number">2</span>Description of the App</h2>
+                <p><em>Student Expense Tracker</em> is a mobile app designed to help students manage personal expenses. The app may offer:</p>
+                <ul>
+                    <li>Expense tracking and budgeting tools</li>
+                    <li>Data synchronization via cloud (Firebase)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-number">3</span>User Eligibility</h2>
+                <p>This app is intended for use by individuals aged <span class="highlight">4 years or older</span>.</p>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-number">4</span>User Data</h2>
+                <p>The app does <strong>not collect personal data directly</strong>. Firebase may collect minimal device or usage data as described in our Privacy Policy.</p>
+                <p>You are responsible for maintaining the confidentiality of any credentials used to access cloud features (e.g., sign in with Apple ID).</p>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-number">6</span>Intellectual Property</h2>
+                <p>All content in the app, including design, code, graphics, and trademarks, is the property of the developer or its licensors. You may not copy, modify, reverse-engineer, or redistribute the app or its components without written permission.</p>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-number">7</span>Limitation of Liability</h2>
+                <p>The app is provided "as is" without warranties of any kind. We are not liable for:</p>
+                <ul>
+                    <li>Data loss or corruption</li>
+                    <li>Financial loss or budgeting errors</li>
+                    <li>Downtime or service interruptions</li>
+                    <li>Any indirect or consequential damages arising from app use</li>
+                </ul>
+                <p><strong>Use the app at your own risk.</strong></p>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-number">8</span>Modifications</h2>
+                <p>We reserve the right to update or change these Terms at any time. Changes will be posted in the app or on our website. Continued use of the app after changes are posted implies acceptance.</p>
+            </div>
+
+            <div class="section">
+                <h2><span class="section-number">9</span>Termination</h2>
+                <p>We reserve the right to suspend or terminate access to the app for violation of these Terms or abuse of the service.</p>
+            </div>
+
+            <div class="contact-info">
+                <h2><span class="section-number">10</span>Contact</h2>
+                <p>For support or questions related to these Terms:</p>
+                <p><strong>Email:</strong> <a href="mailto:support@studentexpensetracker.app" class="email-link">support@studentexpensetracker.app</a></p>
+            </div>
+        </div>
+
+        <div class="footer">
+            Thank you for using <em>Student Expense Tracker</em>!
+        </div>
+    </div>
+</body>
+</html>
