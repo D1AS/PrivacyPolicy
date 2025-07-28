@@ -1,74 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Privacy Policy – Buckit</title>
-  <style>
-    body {
-      max-width: 800px;
-      margin: 2em auto;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
-      padding: 0 1em;
-    }
-    h1, h2 {
-      color: #00bfa5;
-    }
-    ul {
-      padding-left: 1.5em;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Student Expense Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .app-name {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            border-left: 4px solid #4facfe;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 0%, rgba(79, 172, 254, 0.05) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .section:hover::before {
+            opacity: 1;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left-color: #00f2fe;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section p, .section ul {
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section ul {
+            padding-left: 20px;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+            list-style-type: none;
+            position: relative;
+        }
+
+        .section li::before {
+            content: '→';
+            color: #4facfe;
+            font-weight: bold;
+            position: absolute;
+            left: -20px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .emoji {
+            font-size: 1.2rem;
+            margin-right: 5px;
+        }
+
+        .privacy-features {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .privacy-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .privacy-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .privacy-features li:last-child {
+            border-bottom: none;
+        }
+
+        .privacy-features li::before {
+            content: '✓';
+            color: #2c3e50;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .no-do-list {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .no-do-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .no-do-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .no-do-list li:last-child {
+            border-bottom: none;
+        }
+
+        .no-do-list li::before {
+            content: '✗';
+            color: #e74c3c;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .contact-info h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .email-link {
+            color: #a8edea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .email-link:hover {
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .meta-info {
+                gap: 15px;
+            }
+            
+            .meta-item {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>📃 Privacy Policy</h1>
-  <p><strong>Effective Date:</strong> July 25, 2025<br>
-     <strong>App Name:</strong> <em>Student Expense Tracker</em><br>
-     <strong>Platform:</strong> iOS<br>
-     <strong>Developer:</strong> Buckit</p>
+    <div class="container">
+        <div class="header">
+            <h1>📃 Privacy Policy</h1>
+            <div class="app-name">Student Expense Tracker</div>
+            <div class="meta-info">
+                <div class="meta-item">Effective: July 25, 2025</div>
+                <div class="meta-item">Platform: iOS</div>
+                <div class="meta-item">Developer: Buckit</div>
+            </div>
+        </div>
 
-  <h2>🔐 Your Privacy Matters</h2>
-  <p>At <em>Student Expense Tracker</em>, your privacy is a top priority. This app is designed to help students manage their expenses securely, without unnecessary data collection or tracking.</p>
+        <div class="content">
+            <div class="section">
+                <h2><span class="emoji">🔐</span>Your Privacy Matters</h2>
+                <p>At <em>Student Expense Tracker</em>, your privacy is a top priority. This app is designed to help students manage their expenses securely, without unnecessary data collection or tracking.</p>
+            </div>
 
-  <h2>📲 Information We Collect</h2>
-  <p>The app itself does <strong>not collect any personal information</strong> from you directly.</p>
-  <p>However, we use <strong>Firebase</strong>, a backend service by Google, to provide cloud functionality such as:</p>
-  <ul>
-    <li>🔁 Cloud Sync of your expense data (optional)</li>
-    <li>📊 Crash Reporting & Performance Monitoring</li>
-    <li>🔒 Authentication – optional sign-in using Apple ID</li>
-  </ul>
-  <p><strong>Firebase May Collect:</strong></p>
-  <ul>
-    <li>Device type and OS version</li>
-    <li>Anonymous usage statistics</li>
-    <li>User ID (if sign-in is used)</li>
-    <li>IP address (temporarily)</li>
-  </ul>
-  <p>We use Firebase with privacy-focused defaults:</p>
-  <ul>
-    <li>No personalized ads</li>
-    <li>No third-party sharing</li>
-    <li>No access to contact, location, or photo data</li>
-  </ul>
+            <div class="section">
+                <h2><span class="emoji">📲</span>Information We Collect</h2>
+                <p>The app itself does <span class="highlight">not collect any personal information</span> from you directly.</p>
+                <p>However, we use <strong>Firebase</strong>, a backend service by Google, to provide cloud functionality such as:</p>
+                
+                <div class="privacy-features">
+                    <ul>
+                        <li><span class="emoji">🔁</span>Cloud Sync of your expense data (optional)</li>
+                        <li><span class="emoji">📊</span>Crash Reporting & Performance Monitoring</li>
+                        <li><span class="emoji">🔒</span>Authentication – optional sign-in using Apple ID</li>
+                    </ul>
+                </div>
 
-  <h2>🚫 What We Don't Do</h2>
-  <ul>
-    <li>❌ No selling or sharing of your data</li>
-    <li>❌ No in-app tracking or cross-site ads</li>
-    <li>❌ No access to camera, microphone, location, or photos</li>
-    <li>❌ No user profiling or behavioral analytics</li>
-  </ul>
+                <p><strong>Firebase May Collect:</strong></p>
+                <ul>
+                    <li>Device type and OS version</li>
+                    <li>Anonymous usage statistics</li>
+                    <li>User ID (if sign-in is used)</li>
+                    <li>IP address (temporarily)</li>
+                </ul>
 
-  <h2>🔄 Data Retention</h2>
-  <p>If you sign in and sync your data, it is securely stored in your Firebase account linked to your Apple ID or email.</p>
+                <p>We use Firebase with privacy-focused defaults:</p>
+                <ul>
+                    <li>No personalized ads</li>
+                    <li>No third-party sharing</li>
+                    <li>No access to contact, location, or photo data</li>
+                </ul>
+            </div>
 
-  <h2>🇪🇺 GDPR & International Compliance</h2>
-  <p>We only collect what's necessary. You have the right to request data access or deletion.</p>
+            <div class="section">
+                <h2><span class="emoji">🚫</span>What We Don't Do</h2>
+                <div class="no-do-list">
+                    <ul>
+                        <li>No selling or sharing of your data</li>
+                        <li>No in-app tracking or cross-site ads</li>
+                        <li>No access to camera, microphone, location, or photos</li>
+                        <li>No user profiling or behavioral analytics</li>
+                    </ul>
+                </div>
+            </div>
 
-  <h2>🔧 Changes to This Policy</h2>
-  <p>We may update this policy for improvements or regulations. You'll be notified in-app of significant changes.</p>
+            <div class="section">
+                <h2><span class="emoji">🔄</span>Data Retention</h2>
+                <p>If you sign in and sync your data, it is securely stored in your Firebase account linked to your Apple ID or email.</p>
+            </div>
 
-  <h2>📬 Contact Us</h2>
-  <p>Email: <a href="mailto:support@studentexpensetracker.app">support@studentexpensetracker.app</a></p>
+            <div class="section">
+                <h2><span class="emoji">🇪🇺</span>GDPR & International Compliance</h2>
+                <p>We only collect what's necessary. You have the right to request data access or deletion.</p>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">🔧</span>Changes to This Policy</h2>
+                <p>We may update this policy for improvements or regulations. You'll be notified in-app of significant changes.</p>
+            </div>
+
+            <div class="contact-info">
+                <h2><span class="emoji">📬</span>Contact Us</h2>
+                <p><strong>Email:</strong> <a href="mailto:support@studentexpensetracker.app" class="email-link">support@studentexpensetracker.app</a></p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
